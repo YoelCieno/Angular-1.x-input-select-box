@@ -1,0 +1,273 @@
+/*!
+ * ui-select
+ * http://github.com/angular-ui/ui-select
+ * Version: 0.11.2 - 2015-03-17T04:08:46.478Z
+ * License: MIT
+ */
+
+
+/* Style when highlighting a search. */
+.ui-select-highlight {
+  font-weight: bold;
+}
+.ui-select-offscreen {
+  clip: rect(0 0 0 0) !important;
+  width: 1px !important;
+  height: 1px !important;
+  border: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  position: absolute !important;
+  outline: 0 !important;
+  left: 0px !important;
+  top: 0px !important;
+}
+
+/* Bootstrap theme */
+
+/* Helper class to show styles when focus */
+.ui-select-match {
+  border:  2px solid #D2D3D5;
+}
+.ui-select-match.btn-default-focus {
+  border: 2px solid #81c5e1 !important;
+  color: #434A54;
+  text-decoration: none;
+  outline: 0 !important;
+}
+.ui-select-bootstrap .ui-select-toggle {
+  position: relative;
+}
+.form-control.ui-select-search {
+  border:  2px solid #9BC8DB !important;
+  width: 100% !important;
+}
+.ui-select-bootstrap .ui-select-toggle > .caret {
+  position: absolute;
+  height: 10px;
+  top: 50%;
+  right: 10px;
+  margin-top: -2px;
+}
+/* Fix Bootstrap dropdown position when inside a input-group */
+
+.input-group > .ui-select-bootstrap.dropdown {
+  /* Instead of relative */
+  position: static;
+}
+.input-group > .ui-select-bootstrap > input.ui-select-search {
+  border-radius: 0; /* FIXME hardcoded value :-/ */
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+/* Instead of center because of .btn */
+
+.ui-select-bootstrap > .ui-select-match > .btn {
+  border-color: transparent !important;
+  overflow: hidden;
+  text-align: left !important;
+}
+/* Mark invalid Bootstrap */
+
+.ui-select-bootstrap > .ui-select-match > .caret {
+  position: absolute;
+  top: 45%;
+  right: 15px;
+}
+/* See Scrollable Menu with Bootstrap 3 http://stackoverflow.com/questions/19227496 */
+
+.ui-select-choices.ui-select-choices-content.dropdown-menu {
+  min-width: 60px;
+}
+.ui-select-bootstrap > .ui-select-choices {
+  width: 100%;
+  height: auto;
+  max-height: 200px;
+  overflow-x: hidden;
+  margin-top: -1px;
+  padding-left: 0;
+}
+body > .ui-select-bootstrap.open {
+  z-index: 1000; /* Standard Bootstrap dropdown z-index */
+}
+
+.ui-select-multiple.ui-select-bootstrap {
+  height: auto;
+  padding: 3px 3px 0 3px;
+}
+.ui-select-multiple.ui-select-bootstrap input.ui-select-search {
+  background-color: transparent !important; /* To prevent double background when disabled */
+  outline: none;
+  height: 1.666666em;
+  margin-bottom: 3px;
+}
+.ui-select-multiple.ui-select-bootstrap .ui-select-match .close {
+  font-size: 1.6em;
+  line-height: 0.75;
+}
+.ui-select-multiple.ui-select-bootstrap .ui-select-match-item {
+  margin: 0 3px 3px 0;
+}
+.ui-select-multiple .ui-select-match-item {
+  position: relative;
+}
+.ui-select-multiple .ui-select-match-item.dropping-before:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 100%;
+  height: 100%;
+  margin-right: 2px;
+  border-left: 1px solid #3bafda;
+}
+.ui-select-multiple .ui-select-match-item.dropping-after:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 100%;
+  height: 100%;
+  margin-left: 2px;
+  border-right: 1px solid #3bafda;
+}
+.ui-select-bootstrap .ui-select-choices-row>a {
+    background-color: white;
+    border-bottom: 1px solid #e6e9ed;
+    clear: both;
+    color: #333;
+    cursor: pointer;
+    display: block;
+    font-weight: 400;
+    line-height: 1.42857143;
+    margin: 0;
+    overflow: hidden;
+    padding: 6px 20px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+}
+.ui-select-bootstrap .ui-select-choices-row>a:hover, .ui-select-bootstrap .ui-select-choices-row>a:focus {
+  text-decoration: none;
+  color: #262626;
+  background-color: #f5f5f5;
+}
+.ui-select-bootstrap .ui-select-choices-row.active>a {
+  color: #fff;
+  text-decoration: none;
+  outline: 0;
+  background-color: #3bafda;
+  border-bottom-color: #3bafda;
+}
+.ui-select-bootstrap .ui-select-choices-row.disabled>a, .ui-select-bootstrap .ui-select-choices-row.active.disabled>a {
+    color: #777;
+    cursor: not-allowed;
+    background-color: #fff;
+}
+.ui-select-choices-row-inner {
+    background-color: #fff;
+}
+/* fix hide/show angular animation */
+.ui-select-match.ng-hide-add, .ui-select-search.ng-hide-add {
+    display: none !important;
+}
+/* Mark invalid Bootstrap */
+.ui-select-bootstrap.ng-dirty.ng-invalid > button.btn.ui-select-match {
+    border-color: #D44950 !important;
+}
+.has-error .ui-select-match {
+  border-color: #E6675F !important;
+  box-shadow: none;
+}
+
+/**
+ * popover
+ * --------------------------------------------------
+ */
+.popover {
+  color: white;
+  background-color: #434a54;
+  border-color: #434a54;
+}
+.popover-title {
+  padding-bottom: 0;
+  font-weight: bold;
+  color: #aab2bd;
+  background-color: transparent;
+  border-bottom: none;
+}
+.popover.top .arrow, .popover.top .arrow:after {
+  border-top-color: #434a54;
+}
+.popover.right .arrow, .popover.right .arrow:after {
+  border-right-color: #434a54;
+}
+.popover.bottom .arrow, .popover.bottom .arrow:after {
+  border-bottom-color: #434a54;
+}
+.popover.left .arrow, .popover.left .arrow:after {
+  border-left-color: #434a54;
+}
+
+/*
+BOOTSTRAP & BOOTFLAT styles to a correct select
+*/
+.open>.dropdown-menu {
+  display: block;
+}
+.dropdown {
+  position: relative;
+}
+.dropdown-menu {
+  border-top: none;
+}
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  display: none;
+  float: left;
+  min-width: 160px;
+  padding: 5px 0;
+  margin: 2px 0 0;
+  font-size: 14px;
+  text-align: left;
+  list-style: none;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0,0,0,.15);
+  border-radius: 4px;
+  box-shadow: 0 6px 12px rgba(0,0,0,.175);
+}
+.dropdown-menu li a:hover, .dropdown-menu li a:focus, .dropdown-menu .active a, .dropdown-menu .active a:hover, .dropdown-menu .active a:focus {
+  outline: none;
+}
+.dropdown-menu .dropdown-header {
+  padding: 5px 20px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #aab2bd;
+}
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak, .ng-hide:not(.ng-hide-animate) {
+  display: none !important;
+}
+.dropdown-header {
+  display: block;
+  padding: 3px 20px;
+  font-size: 12px;
+  line-height: 1.42857143;
+  color: #777;
+  white-space: nowrap;
+}
+.dropdown-menu .divider {
+  background-color: #656d78;
+  border-bottom: none;
+}
+.dropdown-menu .divider {
+  height: 1px;
+  margin: 9px 0;
+  overflow: hidden;
+  background-color: #e5e5e5;
+}
+/*# sourceMappingURL=../dist/css/maps/select.css.map */
